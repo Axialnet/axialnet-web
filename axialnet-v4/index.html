@@ -209,39 +209,83 @@
   <section class="methods section-pad" id="methods">
     <div class="wrap">
       <div class="section-label">METHODOLOGY</div>
-      <div class="methods-layout">
+      <div class="methods-layout-global">
         <div class="methods-intro reveal">
-          <h2 class="methods-h2">Why domain-specific<br>fine-tuning works.</h2>
-          <p>General LLMs fail in high-stakes engineering contexts not due to lack of intelligence, but lack of precision. A 7B model fine-tuned on 300 domain-specific examples consistently outperforms GPT-4 on narrow geotechnical tasks.</p>
+          <h2 class="methods-h2">Building AI from the<br>domain down.</h2>
+          <p>General models fail in engineering contexts not due to a lack of intelligence, but a lack of precision. We use a standardized pipeline to develop highly precise, air-gapped systems tailored for physical-world engineering domains.</p>
         </div>
-        <div class="methods-steps reveal" style="--delay:150ms">
+        
+        <!-- Flowchart -->
+        <div class="flowchart-container reveal" style="--delay:100ms">
+          <div class="flow-row">
+            <div class="flow-box">
+              <span class="flow-num">01</span>
+              <h5>RAW DOMAIN DATA</h5>
+              <p>IS Codes, CAD Specs, Proprietary Docs</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">
+              <span class="flow-num">02</span>
+              <h5>DATA SYNTHESIS</h5>
+              <p>Bootstrapped Instruction Pairs</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">
+              <span class="flow-num">03</span>
+              <h5>PEFT FINE-TUNING</h5>
+              <p>Task-Specific Adapters (QLoRA)</p>
+            </div>
+          </div>
+          <div class="flow-row">
+             <div class="flow-vert-arrow"></div>
+             <div class="flow-vert-arrow"></div>
+             <div class="flow-vert-arrow">↓</div>
+          </div>
+          <div class="flow-row">
+            <div class="flow-box">
+              <span class="flow-num">04</span>
+              <h5>USER QUERY</h5>
+              <p>Engineering Context & Parameters</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">
+              <span class="flow-num">05</span>
+              <h5>HYBRID RAG</h5>
+              <p>Sparse + Dense Fusion (RRF)</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">
+              <span class="flow-num">06</span>
+              <h5>AIR-GAPPED INFERENCE</h5>
+              <p>Local Edge / On-Prem Deployment</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="methods-steps-grid reveal" style="--delay:150ms">
           <div class="method-step">
             <div class="step-head">
-              <span class="step-n">01</span>
-              <h4>Domain immersion</h4>
+              <h4>Data Curation & Synthesis</h4>
             </div>
-            <p>Practitioner vocabulary, real boring log PDFs, IS code references. Not Wikipedia summaries — actual engineering documents.</p>
+            <p>Extracting proprietary practitioner data (e.g., IS Code references, CAD specs, boring logs) and using frontier models to bootstrap high-quality instruction pairs. This ensures the model learns strict physical-world calculation chains rather than semantic approximations.</p>
           </div>
           <div class="method-step">
             <div class="step-head">
-              <span class="step-n">02</span>
-              <h4>Synthetic data generation</h4>
+              <h4>PEFT Fine-Tuning</h4>
             </div>
-            <p>GPT-4o bootstrapped instruction pairs from real site investigation reports. Fully-worked calculation chains across 6 Indian geology types.</p>
+            <p>Applying techniques like Quantized Low-Rank Adaptation (QLoRA) to state-of-the-art open weights. This achieves high recall on domain-specific engineering tasks while keeping VRAM requirements low enough for edge and on-prem deployment.</p>
           </div>
           <div class="method-step">
             <div class="step-head">
-              <span class="step-n">03</span>
-              <h4>QLoRA fine-tuning</h4>
+              <h4>Hybrid RAG</h4>
             </div>
-            <p>4-bit quantized LoRA adapters on Mistral 7B. Deployable on a single consumer GPU. No cloud dependency at inference time.</p>
+            <p>Fusing sparse retrieval (for exact standard/code matching) with dense embeddings (for semantic context). Results are dynamically re-ranked via Reciprocal Rank Fusion to build highly precise, depth-ordered context windows.</p>
           </div>
           <div class="method-step">
             <div class="step-head">
-              <span class="step-n">04</span>
-              <h4>Hybrid RAG pipeline</h4>
+              <h4>Air-Gapped Inference</h4>
             </div>
-            <p>BM25 sparse + BAAI/bge-m3 dense retrieval fused via Reciprocal Rank Fusion. Depth-ordered context builder for site report PDFs.</p>
+            <p>Exporting to optimized formats (like GGUF or TensorRT) for local execution. Infrastructure firms cannot upload proprietary site data or unreleased plans to cloud APIs; secure, on-premise inference is a hard requirement.</p>
           </div>
         </div>
       </div>
