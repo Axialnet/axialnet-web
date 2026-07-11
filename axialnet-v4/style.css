@@ -920,3 +920,119 @@ ul { list-style: none; }
   .project-row { grid-template-columns: 1fr; }
   .project-row__meta { flex-direction: row; align-items: center; }
 }
+
+/* =============================================
+   FLOWCHART
+============================================= */
+.methods-layout-global {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.flowchart-container {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.flow-box {
+  flex: 1;
+  background: var(--off);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.flow-num {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.flow-box h5 {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.flow-box p {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-4);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.flow-arrow {
+  color: var(--line-2);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.flow-vert-arrow {
+  flex: 1;
+  text-align: center;
+  color: var(--line-2);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.methods-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
+
+.methods-steps-grid .method-step {
+  border: none;
+  padding: 0;
+}
+
+.methods-steps-grid .step-head h4 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.methods-steps-grid .method-step p {
+  padding-left: 0;
+}
+
+@media (max-width: 900px) {
+  .flow-row {
+    flex-direction: column;
+  }
+  .flow-arrow, .flow-vert-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  .methods-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
