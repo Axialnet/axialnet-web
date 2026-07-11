@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Axialnet — ML for Physical-World Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assests/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assests/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assests/favicon-16x16.png">
+  <link rel="manifest" href="../assests/site.webmanifest">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <img src="../assests/favicon-32x32.png" width="20" height="20" alt="Axialnet Logo">
+        axialnet
+      </a>
+      <nav class="main-nav">
+        <a href="#projects">Projects</a>
+        <a href="#methods">Methods</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="header-cta">Request Access</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mob-nav" id="mobNav">
+    <button class="mob-nav__close" id="mobClose">✕</button>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#methods">Methods</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__grid">
+
+      <!-- Left: main content -->
+      <div class="hero__main">
+        <div class="hero__label">
+          <span class="dot-live"></span>
+          Working paper · GeoLLM v0.1
+        </div>
+        <h1 class="hero__h1">
+          Machine learning<br>
+          for <em>physical-world</em><br>
+          engineering systems.
+        </h1>
+        <p class="hero__desc">
+          Axialnet develops domain-specific AI for geotechnical and infrastructure engineering — fields where hallucination has real-world consequences.
+        </p>
+        <div class="hero__actions">
+          <a href="#projects" class="btn-primary">View Research</a>
+          <a href="#contact" class="btn-text">Request early access →</a>
+        </div>
+      </div>
+
+      <!-- Right: data panel -->
+      <div class="hero__panel">
+        <div class="panel-header">
+          <span class="panel-title">GeoLLM · Live Inference</span>
+          <span class="panel-status">● RUNNING</span>
+        </div>
+        <div class="panel-body">
+          <canvas id="boringCanvas" width="380" height="310"></canvas>
+        </div>
+        <div class="panel-footer">
+          <span>Model: Mistral-7B-QLoRA-geo</span>
+          <span>Recall: 0.91</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Metrics bar -->
+    <div class="hero__metrics">
+      <div class="metric-item">
+        <span class="metric-num">7B</span>
+        <span class="metric-label">Base model params</span>
+      </div>
+      <div class="metric-sep"></div>
+      <div class="metric-item">
+        <span class="metric-num">&gt;0.90</span>
+        <span class="metric-label">Target SPT recall</span>
+      </div>
+      <div class="metric-sep"></div>
+      <div class="metric-item">
+        <span class="metric-num">300+</span>
+        <span class="metric-label">Training instruction pairs</span>
+      </div>
+      <div class="metric-sep"></div>
+      <div class="metric-item">
+        <span class="metric-num">6</span>
+        <span class="metric-label">Indian geology types</span>
+      </div>
+      <div class="metric-sep"></div>
+      <div class="metric-item">
+        <span class="metric-num">On-prem</span>
+        <span class="metric-label">Ollama / GGUF deploy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER BAND -->
+  <div class="band">
+    <div class="band__inner">
+      <span>QLoRA Fine-tuning</span>
+      <span class="band-dot">·</span>
+      <span>Hybrid BM25 + Dense Retrieval</span>
+      <span class="band-dot">·</span>
+      <span>Reciprocal Rank Fusion</span>
+      <span class="band-dot">·</span>
+      <span>BAAI/bge-m3 Embeddings</span>
+      <span class="band-dot">·</span>
+      <span>GGUF / Ollama</span>
+      <span class="band-dot">·</span>
+      <span>Synthetic Data Generation</span>
+      <span class="band-dot">·</span>
+      <span>GPT-4o Bootstrapping</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="projects section-pad" id="projects">
+    <div class="wrap">
+
+      <div class="section-label">ACTIVE RESEARCH</div>
+
+      <!-- GeoLLM -->
+      <div class="project-row reveal">
+        <div class="project-row__meta">
+          <span class="proj-num">01</span>
+          <span class="proj-tag tag-active">In development</span>
+        </div>
+        <div class="project-row__body">
+          <h2 class="proj-title">GeoLLM</h2>
+          <p class="proj-subtitle">Domain-specific LLM for geotechnical engineering</p>
+          <p class="proj-desc">
+            GeoLLM is a Mistral 7B model fine-tuned with QLoRA on geotechnical engineering data — SPT N-values, boring logs, site investigation reports, and Indian geology classifications. It is designed for on-premise deployment in engineering firms that cannot use cloud-hosted AI for proprietary site data.
+          </p>
+          <div class="proj-specs">
+            <table class="spec-table">
+              <tr><td>Base model</td><td>Mistral 7B</td></tr>
+              <tr><td>Fine-tuning</td><td>QLoRA (4-bit)</td></tr>
+              <tr><td>Embeddings</td><td>BAAI/bge-m3</td></tr>
+              <tr><td>Retrieval</td><td>BM25 + Dense → RRF</td></tr>
+              <tr><td>Deployment</td><td>Ollama / GGUF (on-premise)</td></tr>
+              <tr><td>Target metric</td><td>SPT N-value recall &gt; 0.90</td></tr>
+              <tr><td>Training data</td><td>~300 instruction pairs · 6 Indian geology types</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="project-row__visual">
+          <div class="strata-chart" id="strataChart"></div>
+          <div class="chart-label">Soil profile · SPT N-value by depth</div>
+        </div>
+      </div>
+
+      <div class="row-divider"></div>
+
+      <!-- LaneDisciplineNet -->
+      <div class="project-row reveal" style="--delay:100ms">
+        <div class="project-row__meta">
+          <span class="proj-num">02</span>
+          <span class="proj-tag tag-active">In development</span>
+        </div>
+        <div class="project-row__body">
+          <h2 class="proj-title">LaneDisciplineNet</h2>
+          <p class="proj-subtitle">Lane violation detection for Indian road conditions</p>
+          <p class="proj-desc">
+            A two-stage computer vision system combining YOLOv8 object detection with CLRNet lane detection for real-time lane discipline analysis in Indian mixed traffic conditions. Trained on the India Driving Dataset (IDD) using distributed training across A100 GPUs on Param Shivay HPC.
+          </p>
+          <div class="proj-specs">
+            <table class="spec-table">
+              <tr><td>Detection</td><td>YOLOv8</td></tr>
+              <tr><td>Lane detection</td><td>CLRNet</td></tr>
+              <tr><td>Training dataset</td><td>IDD (India Driving Dataset)</td></tr>
+              <tr><td>Training compute</td><td>Param Shivay · A100/V100 DDP</td></tr>
+              <tr><td>Export</td><td>TensorRT FP16</td></tr>
+              <tr><td>Target</td><td>Real-time edge inference</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="project-row__visual project-row__visual--lane">
+          <div class="lane-viz" id="laneViz"></div>
+          <div class="chart-label">Traffic frame · lane detection overlay</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- METHODS -->
+  <section class="methods section-pad" id="methods">
+    <div class="wrap">
+      <div class="section-label">METHODOLOGY</div>
+      <div class="methods-layout">
+        <div class="methods-intro reveal">
+          <h2 class="methods-h2">Why domain-specific<br>fine-tuning works.</h2>
+          <p>General LLMs fail in high-stakes engineering contexts not due to lack of intelligence, but lack of precision. A 7B model fine-tuned on 300 domain-specific examples consistently outperforms GPT-4 on narrow geotechnical tasks.</p>
+        </div>
+        <div class="methods-steps reveal" style="--delay:150ms">
+          <div class="method-step">
+            <div class="step-head">
+              <span class="step-n">01</span>
+              <h4>Domain immersion</h4>
+            </div>
+            <p>Practitioner vocabulary, real boring log PDFs, IS code references. Not Wikipedia summaries — actual engineering documents.</p>
+          </div>
+          <div class="method-step">
+            <div class="step-head">
+              <span class="step-n">02</span>
+              <h4>Synthetic data generation</h4>
+            </div>
+            <p>GPT-4o bootstrapped instruction pairs from real site investigation reports. Fully-worked calculation chains across 6 Indian geology types.</p>
+          </div>
+          <div class="method-step">
+            <div class="step-head">
+              <span class="step-n">03</span>
+              <h4>QLoRA fine-tuning</h4>
+            </div>
+            <p>4-bit quantized LoRA adapters on Mistral 7B. Deployable on a single consumer GPU. No cloud dependency at inference time.</p>
+          </div>
+          <div class="method-step">
+            <div class="step-head">
+              <span class="step-n">04</span>
+              <h4>Hybrid RAG pipeline</h4>
+            </div>
+            <p>BM25 sparse + BAAI/bge-m3 dense retrieval fused via Reciprocal Rank Fusion. Depth-ordered context builder for site report PDFs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section-pad" id="about">
+    <div class="wrap">
+      <div class="section-label">ABOUT</div>
+      <div class="about-layout">
+        <div class="about-main reveal">
+          <h2 class="about-h2">Built where civil engineering<br>meets machine learning.</h2>
+          <div class="about-body">
+            <p>Axialnet was founded at IIT (BHU) Varanasi. The thesis is simple: physical-world domains — geotechnical, structural, infrastructure engineering — have been almost entirely bypassed by the AI boom, because AI teams don't speak the domain.</p>
+            <p>We do. We are building from the domain down: deep understanding first, then the models to match it.</p>
+          </div>
+          <div class="founder-card">
+            <div class="founder-avatar">VN</div>
+            <div class="founder-info">
+              <strong>Venkat Nallapu</strong>
+              <span>Founder — B.Tech Civil Engineering (IIT BHU, 2027)</span>
+              <span>ML Engineering · Geotechnical AI</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-links reveal" style="--delay:150ms">
+          <a href="https://github.com/axialnet" class="ext-link" target="_blank">
+            <span class="ext-link__label">GitHub</span>
+            <span class="ext-link__arrow">↗</span>
+          </a>
+          <a href="https://linkedin.com/company/axialnet" class="ext-link" target="_blank">
+            <span class="ext-link__label">LinkedIn</span>
+            <span class="ext-link__arrow">↗</span>
+          </a>
+          <a href="mailto:venkat@axialnet.in" class="ext-link">
+            <span class="ext-link__label">venkat@axialnet.in</span>
+            <span class="ext-link__arrow">↗</span>
+          </a>
+          <a href="https://axialnet.in" class="ext-link">
+            <span class="ext-link__label">axialnet.in</span>
+            <span class="ext-link__arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section-pad" id="contact">
+    <div class="wrap">
+      <div class="section-label">CONTACT</div>
+      <div class="contact-layout">
+        <div class="contact-left reveal">
+          <h2 class="contact-h2">Collaborate or<br>request early access.</h2>
+          <p>We are looking for geotechnical engineers, infrastructure firms, and researchers who want AI that genuinely understands their domain.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <span class="contact-key">Email</span>
+              <a href="mailto:venkat@axialnet.in">venkat@axialnet.in</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-key">Phone</span>
+              <a href="tel:+917993013759">+91 79930 13759</a>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm" style="--delay:150ms">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="you@org.com" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="role">Role / Organisation</label>
+            <input type="text" id="role" placeholder="Geotechnical engineer, researcher, etc." />
+          </div>
+          <div class="field">
+            <label for="message">Context</label>
+            <textarea id="message" rows="5" placeholder="What problem are you working on? What domain?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send →</button>
+          <div class="form-success" id="formSuccess">Message received. We'll respond within 48 hours.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-logo">axialnet</span>
+          <p>ML for physical-world engineering systems.</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <span class="footer-col-head">Research</span>
+            <a href="#projects">GeoLLM</a>
+            <a href="#projects">LaneDisciplineNet</a>
+            <a href="#methods">Methods</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-col-head">Company</span>
+            <a href="#about">About</a>
+            <a href="mailto:venkat@axialnet.in">Contact</a>
+            <a href="https://github.com/axialnet" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Axialnet.</span>
+        <span>axialnet.in</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
