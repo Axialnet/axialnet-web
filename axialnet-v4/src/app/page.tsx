@@ -406,8 +406,8 @@ export default function Home() {
     // SMOOTH SCROLL
     // ------------------------------------------
     document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
+      a.addEventListener('click', (e) => {
+        const targetId = a.getAttribute('href');
         if (targetId && targetId !== '#') {
           const t = document.querySelector(targetId);
           if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
