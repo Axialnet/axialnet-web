@@ -874,10 +874,13 @@ export default function Home() {
                 <Link href="#projects">GeoLLM</Link>
                 <Link href="#projects">LaneDisciplineNet</Link>
                 <Link href="#methods">Methods</Link>
+                <Link href="/blog">Blog</Link>
               </div>
               <div className="footer-col">
                 <span className="footer-col-head">Company</span>
                 <Link href="#about">About</Link>
+                <Link href="/careers">Careers</Link>
+                <Link href="/faq">FAQ</Link>
                 <a href="mailto:hello@axialnet.in">Contact</a>
                 <a href="https://github.com/axialnet" target="_blank" rel="noreferrer">GitHub</a>
               </div>
