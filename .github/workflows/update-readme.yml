@@ -1,0 +1,32 @@
+name: Update README with recent commits
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+
+      - name: Generate commit list
+        run: |
+          COMMITS=$(git log -10 --pretty=format:"- \`%h\` %s (%an, %ad)" --date=short)
+          awk -v commits="$COMMITS" '
+            /<!--START_COMMITS-->/ {print; print commits; skip=1; next}
+            /<!--END_COMMITS-->/ {skip=0}
+            !skip {print}
+          ' README.md > README.tmp && mv README.tmp README.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet README.md || (git add README.md && git commit -m "docs: update recent commits [skip ci]" && git push)
