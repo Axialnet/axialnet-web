@@ -24,8 +24,12 @@ const ibmMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.axialnet.in"),
   title: "axialnet — ML Studio",
   description: "Machine learning for physical-world engineering systems.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
